@@ -1,0 +1,12 @@
+test_acceptance_criteria_are_testable (test_review_desk.ReviewDeskTest.test_acceptance_criteria_are_testable) ... ok
+test_claims_are_checked_against_the_diff (test_review_desk.ReviewDeskTest.test_claims_are_checked_against_the_diff) ... ok
+test_decision_cites_the_broken_claim (test_review_desk.ReviewDeskTest.test_decision_cites_the_broken_claim) ... ok
+test_next_story_is_well_formed (test_review_desk.ReviewDeskTest.test_next_story_is_well_formed) ... ok
+test_redacted_request_keeps_what_helps (test_review_desk.ReviewDeskTest.test_redacted_request_keeps_what_helps) ... ok
+test_redacted_request_leaks_nothing (test_review_desk.ReviewDeskTest.test_redacted_request_leaks_nothing) ... ok
+test_sharing_plan_sorts_the_material (test_review_desk.ReviewDeskTest.test_sharing_plan_sorts_the_material) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in <seconds>s
+
+OK

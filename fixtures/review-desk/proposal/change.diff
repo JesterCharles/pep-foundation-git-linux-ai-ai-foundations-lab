@@ -1,0 +1,25 @@
+diff --git a/status_message.py b/status_message.py
+index b233dfd..1ffa0e4 100644
+--- a/status_message.py
++++ b/status_message.py
+@@ -5,7 +5,8 @@ import os
+ 
+ def status_message():
+     deployment = os.environ.get("DEPLOY_ENV", "development")
+-    return f"{deployment}: ready"
++    port = os.environ.get("STATUS_PORT", "8080")
++    return f"{deployment}: ready on port {port}"
+ 
+ 
+ def help_message():
+diff --git a/README.md b/README.md
+index 0f601ef..5d28d7f 100644
+--- a/README.md
++++ b/README.md
+@@ -8,3 +8,6 @@ Run it with:
+ 
+ The deployment name comes from the `DEPLOY_ENV` environment variable and
+ falls back to `development` when it is not set.
++
++The status line also names the port the service expects, from the
++`STATUS_PORT` environment variable (`8080` when it is not set).
