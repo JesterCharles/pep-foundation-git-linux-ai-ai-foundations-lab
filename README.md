@@ -204,9 +204,4 @@ the question word for word: they are the part that helps. Now do step 6.
 | `claim-2` keeps failing | Read the whole diff, not the summary. Count the files it touches, then reread claim 2. |
 | The redaction check fails on the log line | Keep the ERROR line exactly as in the draft, including the timestamp. |
 | You edited the original draft | From the project folder, run `python tests/setup_lab.py` to restore it, then redact the copy in `work/`. |
-
-## Optional: work on your own computer
-
-You only need this if you were not given the project. Clone
-`https://github.com/JesterCharles/pep-foundation-git-linux-ai-ai-foundations-lab`,
-open the cloned folder in VS Code or another editor, and start at **Quick start**.
+| Project files are missing, or setup cannot find them | Ask your trainer to repair the supplied project. Everything the lab needs is in this folder; do not download it from anywhere else. |
