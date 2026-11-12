@@ -100,7 +100,11 @@ fallback), not the wish wording. You may use the example above as one of the thr
 ### Step 4: Check every claim against the diff
 
 `PROPOSAL.md` makes three numbered claims. Open `proposal/change.diff` and look for
-the lines that back each one:
+the lines that back each one. A claim with no diff line behind it is
+**unsupported**, however plausible it sounds.
+
+<details>
+<summary>Hint</summary>
 
 - Claim 1 is about `STATUS_PORT` and a fallback. Which `+` lines in
   `status_message.py` do that?
@@ -108,9 +112,10 @@ the lines that back each one:
 - Claim 3 is about the README. Is there a `README.md` change, and does it describe
   the new line?
 
-A claim with no diff line behind it is **unsupported**, however plausible it sounds.
-(`project/status_message.py` is the code before; `proposal/status_message.py` is the
-code after.)
+`project/status_message.py` is the code before; `proposal/status_message.py` is the
+code after.
+
+</details>
 
 Create `work/review.md`. Replace each `your-verdict` with `supported` or
 `unsupported`, and `your-decision` with `approve` or `request-changes`:
