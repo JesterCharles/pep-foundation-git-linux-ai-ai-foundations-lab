@@ -1,6 +1,6 @@
 """Checks for the "Review the assistant's change" lab. Run from the lab folder:
 
-    python -m unittest discover -s tests -v
+    python -m pytest -q
 
 Each failure message names the next action.
 """
@@ -8,7 +8,7 @@ Each failure message names the next action.
 import re
 import unittest
 
-from lab_support import (
+from test.lab_support import (
     DESK,
     FIXTURES,
     LOG_LINE,
@@ -17,7 +17,7 @@ from lab_support import (
     WORK,
 )
 
-SETUP_HINT = "Run `python tests/setup_lab.py` from the lab folder first."
+SETUP_HINT = "Run `python test/setup_lab.py` from the lab folder first."
 CRITERION = re.compile(r"^Criterion [0-9]+: Given .+ When .+ Then .+$")
 VAGUE = ["show the port stuff", "work fine", "should be better", "looks good", "user-friendly"]
 

@@ -8,7 +8,7 @@ from pathlib import Path
 
 LAB_ROOT = Path(__file__).resolve().parent.parent
 FIXTURES = LAB_ROOT / "fixtures" / "review-desk"
-STARTER = LAB_ROOT / "starter"
+STARTER = LAB_ROOT / "src"
 DESK = STARTER / "review-desk"
 WORK = DESK / "work"
 
@@ -26,7 +26,7 @@ SHIPPED = [
 # Paths created by setup or by the learner; reset and cleanup remove them.
 CREATED_PATHS = [
     WORK,
-    LAB_ROOT / "tests" / "__pycache__",
+    LAB_ROOT / "test" / "__pycache__",
 ]
 
 # Ground truth the checks rely on.
@@ -46,9 +46,9 @@ def inside(path, parent):
 
 
 def remove(path):
-    """Remove a lab-created path after confirming it is inside the starter or tests folder."""
+    """Remove a lab-created path after confirming it is inside the src or test folder."""
     path = Path(path)
-    if not (inside(path, STARTER) or inside(path, LAB_ROOT / "tests")):
+    if not (inside(path, STARTER) or inside(path, LAB_ROOT / "test")):
         raise RuntimeError(f"refusing to remove {path}: outside the lab")
     if path.is_dir() and not path.is_symlink():
         shutil.rmtree(path)
