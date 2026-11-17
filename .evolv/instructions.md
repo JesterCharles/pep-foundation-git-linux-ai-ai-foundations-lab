@@ -11,63 +11,48 @@ the help request safe to send. You write your answers into Markdown files that t
 tests check. No AI model or app runs in this lab.
 
 - **Time:** about 15 minutes. If you pass 20, pause and finish in self-study.
-- **You need:** Python 3.11 or newer.
 - **Offline:** no account, network or AI assistant.
 
 ## Your path
 
 ```text
-Set up -> Run Tests: 7 fail -> Steps 3-5 (write 5 files) -> Run Tests: 7 pass -> Submit
+Run Tests: 3 fail -> Tasks 1-3 (fill in the files in work/) -> Run Tests: 3 pass -> Submit
 ```
 
-In words: set the lab up and see all 7 checks fail, write your files in steps 3 to 5,
-then select **Run Tests** again and select **Submit** when all 7 pass.
+In words: run the tests and see all 3 fail, fill in your answer files for the three
+tasks, then select **Run Tests** again and select **Submit** when all 3 pass.
 
 ## Quick start
 
-1. **Open a terminal** with **Terminal > New Terminal**. It starts in the project
-   folder, the one that holds `src/`, `test/` and `fixtures/`.
-2. **Set up the review desk, then run the tests:**
+1. Open `src/review-desk/`. Read the shipped files there and leave them unchanged.
+   Everything you write goes into its `work/` folder, which already holds a starter
+   file for each answer.
+2. Select **Run Tests** before you change anything.
 
-   ```text
-   python test/setup_lab.py
-   ```
+   **All 3 visible tests fail at first. That is expected: the answer files still hold
+   placeholders.** Every failure message starts with its task number, such as
+   `Task 2:`.
+3. Work through the checklist below. After each task, select **Run Tests** again and
+   read the remaining `Task N:` messages.
+4. **You are finished when all 3 tests pass.** Then select **Submit**. Submitting also
+   runs held-out tests you can't see.
 
-   **Expect:** `Review desk ready in src/review-desk/.` Now select **Run Tests**.
-   **All 7 checks fail at first. That is expected:** each failure message names what
-   is missing. Then move into the review desk: `cd src/review-desk`. You read the
-   shipped files there and leave them unchanged; everything you write goes into its
-   `work/` folder, which is what you submit.
-3. **Write testable acceptance criteria** for the story's three wishes in
-   `work/acceptance-criteria.md`. Check name: `acceptance`.
-4. **Check every claim against the diff.** Record a verdict per claim, then your
-   decision and its evidence, in `work/review.md`, and a follow-up user story in
-   `work/next-story.md`. Check names: `claims`, `decision`, `next_story`.
-5. **Make the help request safe to send.** Sort the draft's material in
-   `work/sharing-plan.md`, then redact a copy of the draft in
-   `work/help-request-redacted.md`. Check names: `sharing_plan`, `redacted`.
-6. **Prove it:** select **Run Tests** again.
+## Checklist
 
-   **Expect:** all 7 checks pass. **You are finished when all 7 pass.** Then select
-   **Submit**.
+- [ ] Task 1: testable acceptance criteria in `work/acceptance-criteria.md`
+- [ ] Task 2: claim verdicts, decision and evidence in `work/review.md`, and a
+  follow-up story in `work/next-story.md`
+- [ ] Task 3: a sharing plan in `work/sharing-plan.md` and a redacted copy of the
+  draft in `work/help-request-redacted.md`
 
-**Check one step at a time.** From `src/review-desk`, put the step's check name
-after `-k`:
+A task is done when no failure message starts with its number.
 
-```text
-python -m pytest -q ../../test -k acceptance
-```
+## Task steps
 
-**Expect:** `1 passed` (the other checks show as `deselected`). If it says `failed`, read the message under it. From the
-project folder, the same check is `python -m pytest -q -k acceptance`, and
-`python -m pytest -q` runs all 7, exactly as **Run Tests** does.
+Paths below are relative to `src/review-desk`. You can create and edit every file in
+the editor.
 
-## Step-by-step guide
-
-You can create and edit every file in the editor. Paths are relative to
-`src/review-desk`.
-
-### Step 3: Turn the story into testable acceptance criteria
+### Task 1: Turn the story into testable acceptance criteria
 
 Read `USER_STORY.md`. The story is fine, but the three stand-up wishes under it
 cannot be checked: "It should work fine when nothing is configured" - fine according
@@ -80,8 +65,8 @@ observable result (**Then**). For example:
 Criterion 2: Given STATUS_PORT is not set, When status_message() is called, Then the line ends with "on port 8080".
 ```
 
-Create `work/acceptance-criteria.md` with three lines, one per wish, each on one line
-in this shape:
+Replace the three `TODO` lines in `work/acceptance-criteria.md` with one criterion per
+wish, each on one line in this shape:
 
 ```text
 Criterion 1: Given ... When ... Then ...
@@ -92,7 +77,7 @@ Criterion 3: Given ... When ... Then ...
 Use the facts the story already agreed (the `STATUS_PORT` variable and the `8080`
 fallback), not the wish wording. You may use the example above as one of the three.
 
-### Step 4: Check every claim against the diff
+### Task 2: Check every claim against the diff
 
 `PROPOSAL.md` makes three numbered claims. Open `proposal/change.diff` and look for
 the lines that back each one. A claim with no diff line behind it is
@@ -112,31 +97,32 @@ code after.
 
 </details>
 
-Create `work/review.md`. Replace each `your-verdict` with `supported` or
-`unsupported`, and `your-decision` with `approve` or `request-changes`:
+In `work/review.md`, replace each `your-verdict` with `supported` or `unsupported`,
+`your-decision` with `approve` or `request-changes`, and `TODO` with one line naming
+the diff evidence your decision rests on:
 
 ```text
 claim-1=your-verdict
 claim-2=your-verdict
 claim-3=your-verdict
 decision=your-decision
-evidence=one line naming the diff evidence your decision rests on
+evidence=TODO
 ```
 
 Approve only when every claim has diff lines behind it. Merging a promise the diff
 does not keep is how the last incident started.
 
-A request for changes needs a follow-up the team can plan. Write one line in
-`work/next-story.md`:
+A request for changes needs a follow-up the team can plan. Replace the `TODO` line in
+`work/next-story.md` with one line:
 
 ```text
 As ..., I want ..., so that ...
 ```
 
-The want names the missing work itself (not "fix the proposal"); the reason says
-what that work protects.
+The want names the missing work itself (not "fix the proposal"); the reason says what
+that work protects.
 
-### Step 5: Make the help request safe to send
+### Task 3: Make the help request safe to send
 
 `drafts/help-request.md` holds four items: the failing log line, the config facts,
 the reporter's email address and the deploy token. Give each one a verdict:
@@ -150,7 +136,7 @@ Then choose how much of your machine the assistant may see. It must be able to h
 with the status-page config, logs and helper, and see nothing beyond what the task
 needs.
 
-Create `work/sharing-plan.md`. Replace each `your-verdict` with `share`, `redact` or
+In `work/sharing-plan.md`, replace each `your-verdict` with `share`, `redact` or
 `never`, and `your-pick` with `home-folder`, `project-folder` or `single-file`:
 
 ```text
@@ -162,44 +148,38 @@ workspace=your-pick
 ```
 
 Now copy the draft. Never edit the original; reviewers need to see what was nearly
-sent:
+sent. From a terminal in `src/review-desk`:
 
 ```text
 cp drafts/help-request.md work/help-request-redacted.md
 ```
 
-In `work/help-request-redacted.md`, remove the token value and the email address (a
-placeholder such as `[deploy token removed]` is fine). Keep the failing log line and
-the question word for word: they are the part that helps. Now do step 6.
+(or copy the file in the editor). In `work/help-request-redacted.md`, remove the
+token value and the email address (a placeholder such as `[deploy token removed]` is
+fine). Keep the failing log line and the question word for word: they are the part
+that helps.
 
 ## Reference
 
-- **What the 7 checks look at:** your three criteria, your claim verdicts, your
-  decision and evidence, your follow-up story, your sharing plan, and what your
-  redacted copy kept and removed. They also confirm the original draft is unchanged.
-  They read the files in `work/` only; nothing uses the network.
-- **Run Tests** runs `python -m pytest -q` in the project folder. A check that could
-  not run because the lab was never set up counts as a failure.
-- **Expected output:** when everything passes, the output matches
-  `expected/on-completion.txt`; only the run time differs.
-- **Start again:** from the project folder, `python test/setup_lab.py` resets the
-  lab. It removes `work/` and restores every shipped file.
-- **Clean up when finished:** from the project folder, `python test/cleanup_lab.py`
-  removes `work/` and restores the shipped files.
-- **Leave these as they are:** `test/`, `fixtures/`, `expected/` and the shipped
-  files in `src/review-desk/`. The tests in `test/` are restored to their original
-  state before your work is graded, so changes to them do not count.
+- **What the 3 visible tests check:** your criteria's shape and the agreed facts;
+  your claim verdicts, decision and follow-up story; your sharing plan and what your
+  redacted copy kept and removed. They read the files in `work/` only.
+- **Held-out tests**, run on Submit, also check for left-over wish wording, a single
+  verdict per claim, evidence and a follow-up story that name what is missing, and
+  that the original draft is unchanged.
+- **Run Tests** runs `python -m pytest -q` in the project folder. To run one task's
+  check only, add `-k` and the task: `python -m pytest -q -k task2`.
+- **Edit only the files in `src/review-desk/work/`.** The tests in `test/` are
+  restored to their original state before your work is graded, so changes to them do
+  not count.
 
 ## Troubleshooting
 
 | Problem | Fix |
 |---|---|
-| `python: command not found`, or a version older than 3.11 | Run `python3 --version`. If that shows 3.11 or newer, type `alias python=python3` once in this terminal (Windows PowerShell: `Set-Alias python py`). |
-| `Not run: The work folder is missing` | From the project folder, run `python test/setup_lab.py`, then select **Run Tests** again. |
-| A test command fails with `file or directory not found` or finds no tests | Use `python -m pytest -q` in the project folder and `python -m pytest -q ../../test` in `src/review-desk`. |
-| `cp` is not recognised (Windows cmd) | Use `copy drafts\help-request.md work\help-request-redacted.md`, or copy the file in the editor. |
+| `Task N: work/... does not exist yet` | Create the file in `src/review-desk/work/` with exactly that name. |
 | A criterion is rejected as not testable | Keep it on one line as `Criterion N: Given ... When ... Then ...`, with a concrete result after Then. |
 | `claim-2` keeps failing | Read the whole diff, not the summary. Count the files it touches, then reread claim 2. |
 | The redaction check fails on the log line | Keep the ERROR line exactly as in the draft, including the timestamp. |
-| You edited the original draft | From the project folder, run `python test/setup_lab.py` to restore it, then redact the copy in `work/`. |
-| Project files are missing, or setup cannot find them | Ask your trainer to repair the supplied project. Everything the lab needs is in this folder; do not download it from anywhere else. |
+| `cp` is not recognised (Windows cmd) | Use `copy drafts\help-request.md work\help-request-redacted.md`, or copy the file in the editor. |
+| You edited the original draft | Undo your changes to `drafts/help-request.md` (for example with `git checkout -- src/review-desk/drafts/help-request.md`), then redact the copy in `work/`. |
